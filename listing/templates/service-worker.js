@@ -44,11 +44,9 @@ self.addEventListener('activate', event => {
 
 // Serve responses from cache or from the network. Cache resources from the network
 self.addEventListener('fetch', event => {
-  // if (event.request.method !== 'GET') { return; }
-  // if (event.request.method == 'POST') { return; }
   if(event.request.url.indexOf('/admin/') != -1) 
     return false;
-  
+
   if (event.request.url.startsWith(self.location.origin)) {
     event.respondWith(
       caches.match(event.request).then(cachedResponse => {
