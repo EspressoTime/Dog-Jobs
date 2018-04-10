@@ -16,6 +16,13 @@
   <link href="{% static 'images/RaylanFaviconBlue.png' %}" rel="shortcut icon" type="image/x-icon">
   <script src="{% static 'js/service-worker-controller.js' %}" type="text/javascript"></script>
   <link href="{% static 'images/RaylanWebclip.gif' %}" rel="apple-touch-icon">
+  <script src="{% static 'js/indexed-db.js' %}" type='text/javascript'></script>
+
+  <script type="text/javascript">
+  //Create companyData from views.py filtered array
+    var companyData = {{ serialized | safe }};
+    idbInit(companyData);
+  </script>
 </head>
 <body>
   <div class="all-content w-clearfix">
@@ -35,7 +42,8 @@
           <div class="menu-icon w-icon-nav-menu"></div>
         </div>
       </nav>
-
+<!-- 
+  Django objects into HTML. Instead inserted from IndexedDB
 	{% for listing in listings %}
       <div class="listingcontainer w-clearfix">
         <section class="article-text-wrapper">
@@ -53,12 +61,12 @@
           </a>
         </section>
       </div>
-    {% endfor %}
+    {% endfor %} -->
       
     </div>
   </div>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" type="text/javascript" intergrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-  <script src="{% static 'js/webflow.js' %}" type="text/javascript"></script>
-  <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
+  <script src="{% static 'js/webflow.js' %}" type="text/javascript"></script>-->
+  <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif]
 </body>
 </html>

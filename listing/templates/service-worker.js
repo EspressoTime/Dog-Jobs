@@ -14,6 +14,9 @@ const urlsToCache = [
   '/static/css/dogfriendlyjobs.webflow.css',
   '/static/css/normalize.css',
   '/static/css/webflow.css',
+  'https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js',
+  'https://code.jquery.com/jquery-3.3.1.min.js',
+
 ];
 
 // Caching resources during service worker install
@@ -41,7 +44,8 @@ self.addEventListener('activate', event => {
 
 // Serve responses from cache or from the network. Cache resources from the network
 self.addEventListener('fetch', event => {
-  // Skip cross-origin requests, like those for Google Analytics.
+  if (request.method !== 'GET') { return; }
+  if (request.method !== 'POST') { return; }
   if (event.request.url.startsWith(self.location.origin)) {
     event.respondWith(
       caches.match(event.request).then(cachedResponse => {
