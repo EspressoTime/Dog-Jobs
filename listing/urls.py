@@ -9,4 +9,5 @@ urlpatterns = [
 		    template_name="service-worker.js",
 		    content_type='application/javascript',
 		)), name='service-worker.js'),
+    url('^manifest.json$', manifest)
 ]
